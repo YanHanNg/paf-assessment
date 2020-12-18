@@ -68,7 +68,7 @@ const makeQuery = (sql, pool) => {
 
 //SQL to Authenticate
 const SQL_AUTHENTICATE = "SELECT Count(*) as count from user where user_id = ? and password = ?"
-const authenticateMySQL = makeQuery(SQL_AUTHENTICATE, pool);
+const authenticateUser= makeQuery(SQL_AUTHENTICATE, pool);
 
 //Resources
 // POST /authenticate
@@ -77,7 +77,7 @@ app.post('/authenticate', express.json(), (req, res) => {
 	const user_id = req.body['user_id'];
 	const passwordSha1 = sha1(req.body['password']);
 
-	authenticateMySQL([user_id, passwordSha1])
+	authenticateUser([user_id, passwordSha1])
 		.then(data => {
 
             // Get Count if count > 1 means the user is a valid user
@@ -141,7 +141,7 @@ app.post('/shareSomthing', upload.single('image-file'), (req, res) => {
     const user_id = req.body['user_id'];
 	const passwordSha1 = sha1(req.body['password']);
 
-    authenticateMySQL([user_id, passwordSha1])
+    authenticateUser([user_id, passwordSha1])
 		.then(data => {
 
             // Get Count if count > 1 means the user is a valid user
