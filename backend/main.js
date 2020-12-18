@@ -1,3 +1,6 @@
+// Accquire all the Environment Variables from .env
+require('dotenv').config();
+
 const morgan = require('morgan')
 const express = require('express')
 
