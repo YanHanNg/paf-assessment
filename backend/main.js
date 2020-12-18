@@ -155,7 +155,6 @@ app.post('/shareSomthing', upload.single('image-file'), (req, res) => {
         .then(data => {
             // Read file from Temporary
             return readFile(req.file.path)
-                .then(buff => buff)
         })
         .then(buff => s3PutObject(req.file, buff, s3))
         .then(result => {
