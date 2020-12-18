@@ -184,6 +184,9 @@ app.post('/shareSomthing', upload.single('image-file'), (req, res) => {
         })
 })
 
+//Angular Frontend [Copy from Angular Side dist/frontend after ng build --prod]
+app.use(express.static(__dirname + '/frontend'));
+
 const pMysql = new Promise( (resolve, reject) => {
     pool.getConnection()
         .then(conn => {
@@ -219,5 +222,8 @@ Promise.all([pMysql, pMongo, pAWSKey])
         app.listen(PORT, () => {
             console.info(`Application started on port ${PORT} at ${new Date()}`)
         })
+    })
+    .catch(err => {
+        console.error('Error while starting mysql, mongodb or no AWS Keys', err);
     })
 
