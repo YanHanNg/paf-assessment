@@ -10,6 +10,8 @@ import {CameraService} from './camera.service';
 import { LoginComponent } from './components/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from './authentication.service';
+import { PAFBackendService } from './paf.backend.service';
 
 const ROUTES: Routes = [
 	{ path: '', component: LoginComponent },
@@ -31,7 +33,7 @@ const ROUTES: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ CameraService ],
+  providers: [ CameraService, AuthenticationService, PAFBackendService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
