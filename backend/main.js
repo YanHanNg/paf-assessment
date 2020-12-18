@@ -9,7 +9,6 @@ const multer = require('multer');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 const { MongoClient } = require('mongodb');
-const { EILSEQ } = require('constants');
 
 const PORT = parseInt(process.argv[2]) || parseInt(process.env.PORT) || 3000
 
